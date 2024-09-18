@@ -31,7 +31,7 @@ This project is a web-based application designed for **electric vehicle (EV) use
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
-- **Map API**: (mention the map API you’re using, e.g., Google Maps, OpenStreetMap)
+- **Map API**: (OpenStreetMap, leaflet.js)
 
 ## How to Run the Project
 
