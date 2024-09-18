@@ -1,0 +1,149 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #219150;
+}
+
+.hidden {
+  display: none;
+}
+
+.social-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-login button {
+  background-color: #3b5998;
+  margin: 5px 0;
+}
+
+.social-login button:last-child {
+  background-color: #db4437;
+}
+
+a {
+  color: #27ae60;
+  cursor: pointer;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-row .input-group {
+  flex: 0 0 48%;
+}
+
+.password-group {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 35px;
+  cursor: pointer;
+}
+
+.password-strength {
+  margin-top: 5px;
+  font-size: 14px;
+  color: red;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.errorMessage1{
+  color: red;
+  font-size: 16px;
+  margin-top:10px;
+}
+
+.errorMessage2{
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.errorMessage3{
+  color: red;
+  font-size: 16x;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+      padding: 10px;
+      width: 100%;
+  }
+
+  button {
+      font-size: 14px;
+  }
+
+  .form-row {
+      flex-direction: column;
+  }
+
+  .form-row .input-group {
+      flex: 0 0 100%;
+      margin-bottom: 10px;
+  }
+}
