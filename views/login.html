@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Charging Station</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <div id="loginForm">
+            <div class="errorMessage1">
+                <p>This is error message</p>
+            </div>
+            <h2>Login</h2>
+            <form action="index.html" method="post">
+            <form onsubmit="return validateLogin()">
+              <p>Don't have an account? <a href="#" onclick="showRegisterOptions()">Register now</a></p>
+                <div class="input-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="input-group password-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                    <span class="toggle-password" onclick="togglePassword('loginPassword')">&#128065;</span>
+                </div>
+                <button type="submit">Login</button>
+                <div class="social-login">
+                    <p>Or login using:</p>
+                    <button type="button">Facebook</button>
+                    <button type="button">Google</button>
+                </div>
+                </form>
+            </form>
+        </div>
+
+        
+        <div id="registerOptions" class="hidden">
+            <h2>Register</h2>
+            <a href="/views/evstation.html"><form action="/showStationForm" method="POST"><button onclick="showRegisterForm('station')">Register as EV Station</button></form></a>
+            <a href="/views/evowner.html"><form action="/showEVOwnerForm" method="POST"><button onclick="showRegisterForm('owner')">Register as EV Owner</button></form></a>
+            <form action="/gobackToLogin" method="POST"><button onclick="showLoginForm()" >Back</button></form>
+        </div>
+    </div>
+    <script src="/js/login.js"></script>
+</body>
+</html>

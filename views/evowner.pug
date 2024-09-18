@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet" href="/css/login.css")
+  body
+    .container
+      form(action="login.html" method="post")
+      #registerOwnerForm
+        .errorMessage2
+          p #{message}
+        h2 Register as EV Owner
+        form(action="/signUpEVOwnerToDB" method="POST" onsubmit="return validateRegister('owner')")
+          .form-row
+            .input-group
+              label(for="ownerFirstName") First Name
+              input(type="text" id="ownerFirstName" name="firstName" required)
+            .input-group
+              label(for="ownerLastName") Last Name
+              input(type="text" id="ownerLastName" name="lastName" required)
+          .form-row
+            .input-group
+              label(for="ownerEmail") Email ID
+              input(type="email" id="ownerEmail" name="emailID" required)
+            .input-group
+              label(for="ownerPhone") Phone Number
+              input(type="tel" id="ownerPhone" pattern="\\d{10}" name="phone" required)
+          .form-row
+            .input-group.password-group
+              label(for="ownerPassword") Password
+              input(type="password" id="ownerPassword" name="pass" required oninput="checkPasswordStrength('ownerPassword', 'ownerPasswordStrength')")
+              span.toggle-password(onclick="togglePassword('ownerPassword')") &#128065;
+            .input-group.password-group
+              label(for="ownerConfirmPassword") Confirm Password
+              input(type="password" id="ownerConfirmPassword" required)
+              span.toggle-password(onclick="togglePassword('ownerConfirmPassword')") &#128065;
+          .password-strength#ownerPasswordStrength
+          .error-message#ownerErrorMessage
+          button(type="submit") Sign Up
+          a(href="login.html")
+            form(action="/backFromEVOwner" method="POST")
+              button(type="button" onclick="showRegisterOptions()") Back
+    script(src="/js/login.js")

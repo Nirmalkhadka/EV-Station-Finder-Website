@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <link rel="stylesheet" href="css/style1.css">
+
+  
+	<!-- *******  Link To CSS Style Sheet  ******* -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- *******  Font Awesome Icons Link  ******* -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+	<!-- *******  Link To Goggle Fonts  *******  -->
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Fontawesome Link for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Leaflet Search Bar -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <!-- Current Location -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.81.0/dist/L.Control.Locate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.81.0/dist/L.Control.Locate.min.js"
+        charset="utf-8"></script>
+
+    <!-- Leaflet Routing Machine -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-routing-machine/dist/leaflet-routing-machine.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+</head>
+<body>
+  <header>
+  <nav>
+    <ul class="sidebar">
+      <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Plan a trip</a></li>
+      <li><a href="#">Login</a></li>
+    </ul>
+    <ul>
+      <li class="logo">
+        <img src="\imgs\20240602_081559564_iOS.png" alt="Logo">
+    </li>
+      <li class="hideOnMobile"><a class="link" href="#wrapper">Blog</a></li>
+      <li class="hideOnMobile"><a class="link" href="#about">About</a></li>
+      <li class="hideOnMobile"><a class="link" href="#contact">Contact</a></li>
+      <li class="hideOnMobile"><a class="link" href="#">Plan a trip</a></li>
+      <li class="hideOnMobile" ><a href="/views/login.html" ><form action="/displayLogin" method="POST">"<button id="login">Login</button></form></a></li>
+      <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+    </ul>
+  </nav>
+</header>
+  <main>
+    <!-- for map  -->
+  <div id="map">
+    
+    <div class="center-container">
+      <button class="map-button" id="center-button" onclick="searchNearestEvStation()">Nearest EV Station</button>
+    </div>
+    
+      <button class="map-button1" onclick="fullScreenView()"><img class="img" src="\imgs\zoomin.png" alt=""
+              srcset=""></button>
+      <button class="map-button2" onclick="toggleFilterModal()"><img src="\imgs\download (1).png" alt=""></button>
+
+
+      <div id="filterModal" class="filter-modal">
+          <h3>Filter EV Stations</h3>
+          <div>
+              <button onclick="filterStations('car')">Car</button>
+              <button onclick="filterStations('bike')">Bike</button>
+          </div>
+          <div>
+              <button onclick="filterStations('type1')">Type 1</button>
+              <button onclick="filterStations('type2')">Type 2</button>
+          </div>
+          <div>
+              <button onclick="filterStations('ac')">AC</button>
+              <button onclick="filterStations('dc')">DC</button>
+          </div>
+          <div>
+              <button onclick="resetFilters()">Reset Filters</button>
+          </div>
+      </div>
+  </div>
+<h1 class="headblog">Blog</h1>
+  <!-- blog section  -->
+<section class="blog21" >
+
+  <div class="wrapper" id="wrapper">
+    <i id="left" class="fa-solid fa-angle-left"></i>
+    <ul class="carousel">
+      <li class="card" id="blog1">
+        <div class="img"><img src="\imgs\img1.jpg" alt="img" draggable="false"></div>
+        <h2>Introduction to EVs
+        </h2>
+        
+      <p>Introduction & History of EVs</p>
+      <button class="read-more" onclick="showMore('blog1')">Read More</button>
+      <div class="more-content">
+        <button class="close" onclick="hideMore()">&#x2715;</button>
+        <p>What are Electric Vehicles?
+          Electric vehicles (EVs) are vehicles that use electric motors for propulsion, instead of traditional internal combustion engines (ICE). EVs can be powered by various sources, including:
+          Battery Electric Vehicles (BEVs): Powered entirely by rechargeable batteries.
+          Fuel Cell Electric Vehicles (FCEVs): Use hydrogen fuel cells to generate electricity.
+          Plug-in Hybrid Electric Vehicles (PHEVs): Combine an electric motor with a traditional gasoline engine, allowing for both electric and fuel-powered driving.
+          History of Electric Vehicles
+          The history of EVs dates back to the 19th century:
+          1830s: Early experiments with electric carriages.
+          1880s: The first practical electric cars were developed, including the Flocken Elektrowagen.
+          Early 1900s: EVs were popular, especially among urban drivers, due to their quiet operation and ease of use.
+          Mid-20th Century: The rise of gasoline-powered cars led to a decline in EV popularity.
+          Late 20th Century and Early 21st Century: Renewed interest in EVs due to environmental concerns and advancements in battery technology. </p>
+      </div>
+      </li>
+      <li class="card" id="blog2">
+        <div class="img"><img src="\imgs\img2.jpg" alt="img" draggable="false"></div>
+        <h2> Benefits of EVs</h2>
+        <p> Environmental benefits & Efficiency 
+        </p>
+      <button class="read-more" onclick="showMore('blog2')">Read More</button>
+      <div class="more-content">
+        <button class="close" onclick="hideMore()">&#x2715;</button>
+        <p>Environmental Benefits
+          Reduction in Greenhouse Gas Emissions: EVs produce zero tailpipe emissions, which helps reduce air pollution and greenhouse gases like CO2. Studies show that even when accounting for the electricity used for charging, EVs generally have a lower carbon footprint than ICE vehicles.
+          Decreased Dependence on Fossil Fuels: EVs can be powered by renewable energy sources, reducing reliance on oil and gas. This shift supports energy independence and the use of sustainable resources.
+          Cost Savings
+          Lower Operating Costs: Electricity is cheaper than gasoline. EVs also have fewer moving parts, resulting in lower maintenance costs. For example, EV owners save on oil changes, exhaust system repairs and fuel costs.
+          Government Incentives: Many governments offer incentives such as tax credits, rebates, reduced registration fees and free parking for EV owners. These incentives can significantly reduce the upfront cost of purchasing an EV.
+          Performance and Efficiency
+          Instant Torque and Smooth Acceleration: Electric motors provide instant torque, leading to quicker acceleration and a smoother driving experience.
+          Energy Efficiency: EVs convert more energy from their batteries to movement compared to ICE vehicles, which lose a significant amount of energy as heat.</p>
+      </div>
+      </li>
+      <li class="card" id="blog3">
+        <div class="img"><img src="\imgs\img3.jpg" alt="img" draggable="false"></div>
+        <h2>Types of EVs</h2>
+        <p>BEVs, PHEVs, HEVs</p>
+      <button class="read-more" onclick="showMore('blog3')">Read More</button>
+      <div class="more-content">
+        <button class="close" onclick="hideMore()">&#x2715;</button>
+        <p>Battery Electric Vehicles (BEVs)
+          BEVs are fully electric with no gasoline engine. They rely entirely on rechargeable batteries for power. 
+          Examples: Tesla Model S, Nissan Leaf.
+          
+          Plug-in Hybrid Electric Vehicles (PHEVs)
+          PHEVs combine a gasoline engine with an electric motor and battery. They can run on electric power alone for shorter distances and use the gasoline engine for longer trips. 
+          Examples: Chevrolet Volt, Toyota Prius Prime.
+          
+          Hybrid Electric Vehicles (HEVs)
+          HEVs use a combination of a gasoline engine and an electric motor. They cannot be plugged in to recharge; instead, they recharge the battery through regenerative braking and the internal combustion engine.
+          Examples: Toyota Prius, Honda Accord Hybrid.
+          </p>
+      </div>
+      </li>
+      <li class="card" id="blog4">
+        <div class="img"><img src="\imgs\img4.jpg" alt="img" draggable="false"></div>
+        <h2>EVs' Technology</h2>
+        <p> Working of EVs</p>
+      <button class="read-more" onclick="showMore('blog4')">Read More</button>
+      <div class="more-content">
+        <button class="close" onclick="hideMore()">&#x2715;</button>
+        <p>How Electric Vehicles Work?
+          EVs use electric motors powered by rechargeable batteries. When the driver presses the accelerator, the electric motor draws power from the battery and converts it into mechanical energy to drive the wheels.
+          Battery Technology
+          Lithium-ion Batteries: Most common type used in EVs, known for high energy density, lightweight, and long lifespan. However, they require careful management of charging and discharging to prevent overheating.
+          Solid-state Batteries: Emerging technology that promises higher energy density, faster charging times, and improved safety due to the use of solid electrolytes instead of liquid ones.
+          Charging Infrastructure
+          Home Charging: Most EV owners charge their vehicles at home using Level 1 (120V) or Level 2 (240V) chargers. Level 1 chargers are slower but sufficient for overnight charging, while Level 2 chargers provide faster charging times.
+          Public Charging Stations: Level 3 chargers (DC Fast Charging) provide quick charging solutions, enabling EVs to recharge up to 80% of their battery capacity in 30 minutes. Public charging networks are expanding, with many apps and services available to locate nearby charging stations.
+          </p>
+      </div>
+      </li>
+      
+    </ul>
+    <i id="right" class="fa-solid fa-angle-right"></i>
+  </div>
+  </section>
+  <div class="overlay"></div>
+
+  <!-- about us  -->
+  <section class="about-us" id="about">
+    <h1>About Us</h1>
+    <div class="content">
+      <div class="text">
+        
+        <p>Welcome to [Your Company Name], your trusted platform for finding and booking electric vehicle (EV) charging stations with ease and convenience.</p>
+        <h2>Our Mission</h2>
+        <p>
+          Our mission is to revolutionize the way electric vehicle owners locate and book charging stations. We aim to provide a seamless and user-friendly experience that helps you find the nearest charging station and book your slot with just a few clicks. By making EV charging more accessible, we support the growth of sustainable transportation and contribute to a greener planet..</p>
+        <button class="read-more">Read More</button>
+
+      </div>
+      <div class="image">
+        <img src="\imgs\download.jpg" alt="Our Team">
+      </div>
+    </div>
+  </section>
+
+<!-- user exprience  -->
+<h1 class="h1user">User Exprience</h1>
+<section class="blog21">
+  <!-- <h1>About Us</h1> -->
+  <div class="wrapper" id="user">
+    <i id="left" class="fa-solid fa-angle-left"></i>
+    <ul class="carousel" id="ex">
+      <li class="card" id="gard">
+        <div  id="useimg"><img src="\imgs\download (1)-f.jpg" alt="img" draggable="false"></div>
+        <h2>Pari Khadka</h2>
+        
+      <p id="puser">"The website is user-friendly and makes finding and booking charging stations a breeze."</p>
+      
+      </li>
+      <li class="card" id="gard">
+        <div id="useimg"><img src="\imgs\person2.jpeg" alt="img" draggable="false"></div>
+        <h2>Josh Trump</h2>
+        <p id="puser">"Finding charging stations on my commute and booking a slot in advance saves me so much time and hassle."</p>
+      
+      </li>
+      <li class="card" id="gard">
+        <div id="useimg"><img src="\imgs\download (1)pp.jpg" alt="img" draggable="false"></div>
+        <h2>Ray Smith</h2>
+        <p id="puser">"This platform makes sustainable travel incredibly convenient. Booking charging slots is perfect for long trips."</p>
+      
+      </li>
+      <li class="card" id="gard">
+        <div id="useimg"><img src="\imgs\person22.jpeg" alt="img" draggable="false"></div>
+        <h2>Joe Linken</h2>
+        <p id="puser">"Impressive use of technology for real-time data and smooth booking. The site is fast, accurate, and a must-have for EV owners."</p>
+      
+      </li>
+      
+    </ul>
+    <i id="right" class="fa-solid fa-angle-right"></i>
+  </div>
+  </section>
+
+  <!-- contact  -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <main class="row">
+        
+        <!--  *******   Left Section (Column) Starts   *******  -->
+  
+        <section class="col left">
+          
+          <!--  *******   Title Starts   *******  -->
+  
+          <div class="contactTitle">
+            <h2>Get In Touch</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+          </div>
+  
+          <!--  *******   Title Ends   *******  -->
+  
+          <!--  *******   Contact Info Starts   *******  -->
+  
+          <div class="contactInfo">
+            
+            <div class="iconGroup">
+              <div class="icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="details">
+                <span>Phone</span>
+                <span>+00 110 111 00</span>
+              </div>
+            </div>
+  
+            <div class="iconGroup">
+              <div class="icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="details">
+                <span>Email</span>
+                <span>name.tutorial@gmail.com</span>
+              </div>
+            </div>
+  
+            <div class="iconGroup">
+              <div class="icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="details">
+                <span>Location</span>
+                <span>X Street, Y Road, San Fransisco</span>
+              </div>
+            </div>
+  
+          </div>
+  
+          <!--  *******   Contact Info Ends   *******  -->
+  
+          <!--  *******   Social Media Starts   *******  -->
+  
+          <div class="socialMedia">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+  
+          <!--  *******   Social Media Ends   *******  -->
+  
+        </section>
+  
+        <!--  *******   Left Section (Column) Ends   *******  -->
+  
+        <!--  *******   Right Section (Column) Starts   *******  -->
+  
+        <section class="col right">
+          
+          <!--  *******   Form Starts   *******  -->
+  
+          <form action="/sendContactUsDetails" method="POST" class="messageForm">
+            
+            <div class="inputGroup halfWidth">
+              <input type="text" name="nameValue" required="required">
+              <label>Your Name</label>
+            </div>
+  
+            <div class="inputGroup halfWidth">
+              <input type="email" name="emailValue" required="required">
+              <label>Email</label>
+            </div>
+  
+            <div class="inputGroup fullWidth">
+              <input type="text" name="subjectValue" required="required">
+              <label>Subject</label>
+            </div>
+  
+            <div class="inputGroup fullWidth">
+              <textarea name="textAreaValue" required="required"></textarea>
+              <label>Say Something</label>
+            </div>
+  
+            <div class="inputGroup fullWidth">
+              <button type="submit">Send Message</button>
+            </div>
+  
+          </form>
+  
+          <!--  *******   Form Ends   *******  -->
+        </section>
+  
+        <!--  *******   Right Section (Column) Ends   *******  -->
+  
+      </main>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2023-2024 PLUG-it. All rights reserved.</p>
+    </div>
+  </footer>
+
+<script src="js/script.js"></script>
+<script src="js/script1.js"></script>
+
+</body>
+</html>

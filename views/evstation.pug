@@ -1,0 +1,64 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet" href="/css/login.css")
+  body
+    .container
+      form(action="/signUpStationOwnerToDB" method="POST")
+        #registerStationForm
+          .errorMessage3
+            p #{message}
+          h2 Register as EV Station
+          form(action="/signUpStationOwnerToDB" method="POST" onsubmit="return validateRegister('station')")
+            .form-row
+              .input-group
+                label(for="stationFirstName") First Name
+                input(type="text" id="stationFirstName" name="firstName" required)
+              .input-group
+                label(for="stationLastName") Last Name
+                input(type="text" id="stationLastName" name="lastName" required)
+
+            .form-row
+              .input-group
+                label(for="stationEmail") Email ID
+                input(type="email" id="stationEmail" name="emailID" required)
+              .input-group
+                label(for="stationPhone") Phone Number
+                input(type="tel" id="stationPhone" pattern="\\d{10}" name="phone" required)
+
+            .form-row
+              .input-group
+                label(for="stationName") Station Name
+                input(type="text" id="stationName" name="stationName" required)
+              .input-group
+                label(for="stationLongitude") Longitude
+                input(type="text" id="stationLongitude" pattern="\\d*\\.?\\d*" name="longitude" required)
+
+            .form-row
+              .input-group
+                label(for="stationLatitude") Latitude
+                input(type="text" id="stationLatitude" pattern="\\d*\\.?\\d*" name="latitude" required)
+              .input-group
+                label(for="stationLocation") Location
+                input(type="text" id="stationLocation" name="location" required)
+
+            .form-row
+              .input-group.password-group
+                label(for="stationPassword") Password
+                input(type="password" id="stationPassword" name="pass" required oninput="checkPasswordStrength('stationPassword', 'stationPasswordStrength')")
+                span.toggle-password(onclick="togglePassword('stationPassword')") &#128065;
+              .input-group.password-group
+                label(for="stationConfirmPassword") Confirm Password 
+                input(type="password" id="stationConfirmPassword" required)
+                span.toggle-password(onclick="togglePassword('stationConfirmPassword')") &#128065;
+
+            .password-strength#stationPasswordStrength
+            .error-message#stationErrorMessage
+            button(type="submit") Sign Up
+            
+            form(action="/backFromStationOwner" method="post")
+                button(type="button" onclick="showRegisterOptions()") Back
+    script(src="/js/login.js")

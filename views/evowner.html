@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="login.html" method="post"></form>
+        <div id="registerOwnerForm">
+            <div class="errorMessage2">
+                <p>This is error message</p>
+            </div>
+            <h2>Register as EV Owner</h2>
+            <form action="/signUpEVOwnerToDB" method="POST" onsubmit="return validateRegister('owner')">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="ownerFirstName">First Name</label>
+                        <input type="text" id="ownerFirstName" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="ownerLastName">Last Name</label>
+                        <input type="text" id="ownerLastName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="ownerEmail">Email ID</label>
+                        <input type="email" id="ownerEmail" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="ownerPhone">Phone Number</label>
+                        <input type="tel" id="ownerPhone" pattern="\d{10}" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group password-group">
+                        <label for="ownerPassword">Password</label>
+                        <input type="password" id="ownerPassword" required
+                            oninput="checkPasswordStrength('ownerPassword', 'ownerPasswordStrength')">
+                        <span class="toggle-password" onclick="togglePassword('ownerPassword')">&#128065;</span>
+                    </div>
+                    <div class="input-group password-group">
+                        <label for="ownerConfirmPassword">Confirm Password</label>
+                        <input type="password" id="ownerConfirmPassword" required>
+                        <span class="toggle-password" onclick="togglePassword('ownerConfirmPassword')">&#128065;</span>
+                    </div>
+                </div>
+                <div class="password-strength" id="ownerPasswordStrength"></div>
+                <div class="error-message" id="ownerErrorMessage"></div>
+                <button type="submit">Sign Up</button>
+                <a href="login.html"><form action="/backFromEVOwner" method="POST"><button type="button" onclick="showRegisterOptions()">Back</button></a></form>
+            </form>
+        </div>
+    </div>
+    <script src="/js/login.js"></script>
+</body>
+
+</html>
