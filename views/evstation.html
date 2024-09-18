@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="container">
+    <form action="/signUpStationOwnerToDB" method="POST">
+    <div id="registerStationForm" >
+        <div class="errorMessage3">
+            <p>This is error messaage</p>
+        </div>
+        <h2>Register as EV Station</h2>
+        <form onsubmit="return validateRegister('station')">
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="stationFirstName">First Name</label>
+                    <input type="text" id="stationFirstName" required>
+                </div>
+                <div class="input-group">
+                    <label for="stationLastName">Last Name</label>
+                    <input type="text" id="stationLastName" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="stationEmail">Email ID</label>
+                    <input type="email" id="stationEmail" required>
+                </div>
+                <div class="input-group">
+                    <label for="stationPhone">Phone Number</label>
+                    <input type="tel" id="stationPhone" pattern="\d{10}" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="stationName">Station Name</label>
+                    <input type="text" id="stationName" required>
+                </div>
+                <div class="input-group">
+                    <label for="stationLongitude">Longitude</label>
+                    <input type="text" id="stationLongitude" pattern="\d*\.?\d*" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="stationLatitude">Latitude</label>
+                    <input type="text" id="stationLatitude" pattern="\d*\.?\d*" required>
+                </div>
+                <div class="input-group">
+                    <label for="stationLocation">Location</label>
+                    <input type="text" id="stationLocation" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group password-group">
+                    <label for="stationPassword">Password</label>
+                    <input type="password" id="stationPassword" required oninput="checkPasswordStrength('stationPassword', 'stationPasswordStrength')">
+                    <span class="toggle-password" onclick="togglePassword('stationPassword')">&#128065;</span>
+                </div>
+                <div class="input-group password-group">
+                    <label for="stationConfirmPassword">Confirm Password</label>
+                    <input type="password" id="stationConfirmPassword" required>
+                    <span class="toggle-password" onclick="togglePassword('stationConfirmPassword')">&#128065;</span>
+                </div>
+            </div>
+            <div class="password-strength" id="stationPasswordStrength"></div>
+            <div class="error-message" id="stationErrorMessage"></div>
+            <button type="submit">Sign Up</button>
+            <a href="login.pug"><button type="button" onclick="showRegisterOptions()">Back</button></a>
+        </form>
+    </div>
+    </form>
+    </div>
+    <script src="/js/login.js"></script>
+</body>
+</html>

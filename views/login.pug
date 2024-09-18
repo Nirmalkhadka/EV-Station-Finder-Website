@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title EV Charging Station
+    link(rel="stylesheet" href="/css/login.css")
+  body
+    .container
+      #loginForm
+        .errorMessage1
+          p #{message}
+        h2 Login
+        form(action="/makeLogIn" method="POST" onsubmit="return validateLogin()")
+          p Don't have an account? 
+            a(href="#" onclick="showRegisterOptions()") Register now
+          .input-group
+            label(for="loginEmail") Email Address
+            input(type="email" id="loginEmail" name="emailValue" required)
+          .input-group.password-group
+            label(for="loginPassword") Password
+            input(type="password" id="loginPassword" name="passwordValue" required)
+            span.toggle-password(onclick="togglePassword('loginPassword')") &#128065;
+          button(type="submit") Login
+          .social-login
+            p Or login using:
+            button(type="button") Facebook
+            button(type="button") Google
+
+      #registerOptions.hidden
+        h2 Register
+        a(href="/views/evstation.html")
+          form(action="/showStationForm" method="POST")
+            button(onclick="showRegisterForm('station')") Register as EV Station
+        a(href="/views/evowner.html")
+          form(action="/showEVOwnerForm" method="POST")
+            button(onclick="showRegisterForm('owner')") Register as EV Owner
+        form(action="/gobackToLogin" method="POST")
+          button(onclick="showLoginForm()") Back
+    script(src="/js/login.js")

@@ -1,0 +1,44 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Book Slot
+    link(rel="stylesheet" href="/css/bookslot.css")
+  body
+    form.container
+      form(action="index.html" method="post")
+        #calendarPage
+          button.back-button(onclick="goBack()") &#8592;
+          h2 Select Date and Time
+          .calendar-header
+            select#yearSelect(onchange="renderCalendar()")
+              // Options will be populated by JavaScript
+            select#monthSelect(onchange="renderCalendar()")
+              option(value="0") January
+              option(value="1") February
+              option(value="2") March
+              option(value="3") April
+              option(value="4") May
+              option(value="5") June
+              option(value="6") July
+              option(value="7") August
+              option(value="8") September
+              option(value="9") October
+              option(value="10") November
+              option(value="11") December
+          #calendar
+        #timeSlotPage.hidden
+          button.back-button(onclick="showCalendar()") &#8592;
+          h2 Select Time Slot
+          #timeSlots
+            // Time slots will be populated by JavaScript
+          .input-group
+            label(for="startTime") Start Time
+            input#startTime(type="time")
+          .input-group
+            label(for="endTime") End Time
+            input#endTime(type="time")
+          button(onclick="bookSlot()") Book Slot
+          .message#bookingMessage
+    script(src="/js/bookslot.js")

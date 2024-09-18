@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Slot</title>
+    <link rel="stylesheet" href="/css/bookslot.css">
+</head>
+<body>
+    <form class="container">
+        <form action="index.html" method="post">
+        <div id="calendarPage">
+           
+            <button onclick="goBack()" class="back-button">&#8592;</button>
+            <h2>Select Date and Time</h2>
+            <div class="calendar-header">
+                <select id="yearSelect" onchange="renderCalendar()">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <select id="monthSelect" onchange="renderCalendar()">
+                    <option value="0">January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                </select>
+            </div>
+            <div id="calendar"></div>
+        </div>
+        <div id="timeSlotPage" class="hidden">
+            <button onclick="showCalendar()" class="back-button">&#8592;</button>
+            <h2>Select Time Slot</h2>
+            <div id="timeSlots">
+                <!-- Time slots will be populated by JavaScript -->
+            </div>
+            <div class="input-group">
+                <label for="startTime">Start Time</label>
+                <input type="time" id="startTime">
+            </div>
+            <div class="input-group">
+                <label for="endTime">End Time</label>
+                <input type="time" id="endTime">
+            </div>
+            <button onclick="bookSlot()">Book Slot</button>
+            <div class="message" id="bookingMessage"></div>
+        </div>
+    </form>
+    </div>
+    <script src="/js/bookslot.js"></script>
+</body>
+</html>
